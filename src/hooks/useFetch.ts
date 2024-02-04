@@ -6,8 +6,8 @@ interface Props {
   target?: number
 }
 
-const useFetch = <T>({ type = "character", target = 0 }: Props) => {
-  const [data, setData] = useState<ResponseAPI<T>>()
+const useFetch = <T>({ type = "character", target = 0 }: Props): [Error | undefined, boolean, T | undefined] => {
+  const [data, setData] = useState<T>()
   const [error, setError] = useState<Error>()
   const [loading, isLoading] = useState<boolean>(true)
 
@@ -21,7 +21,7 @@ const useFetch = <T>({ type = "character", target = 0 }: Props) => {
     .finally(() => isLoading(false))
   }, [endpoint])
 
-  return { error, loading, data }
+  return [error, loading, data]
 }
 
 export default useFetch

@@ -60,5 +60,5 @@ interface SpecificLocation {
 }
 
 interface Titles {
-  [key: string]: string
+  [key: number]: string
 }

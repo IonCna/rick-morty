@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+:root {
+  --GRAY-300: #cbd5e1;
+  --GRAY-400: #94a3b8;
+  --GRAY-800: #1e293b;
+  --GRAY-700: #334155;
+}
+
+/* main section */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 100vh;
+}
+
+/* Heading */
+
+.title {
+  text-align: center;
+  cursor: default;
+  font-weight: bolder;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  color: var(--GRAY-800);
+  transition: color 0.2s ease-out;
+}
+
+.text-transition {
+  color: var(--GRAY-300);
+}
+
+/* Cards & Carousel */
+
+.carousel-container {
+  width: 100%;
+  max-width: 800px;
+  max-height: 600px;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Buttons & controls */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls button {
+  cursor: pointer;
+  background-color: var(--GRAY-300);
+  color: var(--GRAY-800);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+.btn-right {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.btn-left {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.controls button:hover {
+  background-color: var(--GRAY-400);
+}
