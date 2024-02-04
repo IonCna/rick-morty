@@ -1,4 +1,4 @@
-const EpisodeCard = ({ episode }: Episode) => {
+const EpisodeCard = () => {
 
   return (
     <div className="card"></div>

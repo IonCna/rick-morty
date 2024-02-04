@@ -24,11 +24,9 @@ const CharacterCard = () => {
   const state = states[formatStatus]
   const translatedSpecies = speciesTypes[character.species]
 
-  console.log({ character })
-
   return (
     <div className="card">
-      <img src={character.image} alt=".banner" />
+      <div className="banner" style={{ backgroundImage: `url(${character.image})` }}></div>
       <div className="content">
         <div>
           <h4 className="subtitle">{character.name}</h4>

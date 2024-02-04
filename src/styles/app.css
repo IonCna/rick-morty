@@ -54,37 +54,42 @@
 
 .carousel-container {
   width: 100%;
-  max-width: 800px;
-  max-height: 600px;
+  max-width: 80%;
+  max-height: 60%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
 }
 
 .card {
+  height: 450px;
+  width: 350px;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   padding: 24px;
   background-color: transparent;
+  border-radius: 1rem;
   box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
-  gap: 8px;
+  gap: 12px;
+  max-width: 20rem;
 }
 
-.card img {
+.card .banner {
+  height: 16rem;
+  width: 16rem;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .card .content {
   width: 100%;
   padding: 0 8px;
-}
-
-.card .content div {
-  margin: 10px 0;
 }
 
 .card .content .subtitle {
@@ -95,11 +100,24 @@
   width: 66.666%;
 }
 
+.thumbnail-container {
+  height: 16rem;
+  width: 16rem;
+  overflow: hidden;
+}
+
+.thumbnail {
+  width: 25%;
+  height: 25%;
+  margin: 5px;
+  border-radius: 1rem;
+}
+
 /* Loading Components */
 
 .loading-image {
-  width: 240px;
-  height: 200px;
+  height: 16rem;
+  width: 16rem;
   background: linear-gradient(
     120deg,
     #e5e5e5 30%,
@@ -113,8 +131,7 @@
 }
 
 .loading-text {
-  width: 200px;
-  height: 90px;
+  width: 100%;
   position: relative;
   float: right;
   border-radius: 5px;

@@ -2,10 +2,13 @@ import { useEffect, useState } from "react"
 
 import useFetch from "./hooks/useFetch"
 import { shuffle } from "./utils"
-import { API, titles } from "./utils/constants"
-import "./styles/app.css"
+import { titles } from "./utils/constants"
 import CharacterCard from "./components/CharacterCard"
-import { useCharacter } from "./hooks/useContext"
+import { useCharacter, useEpisode, useLocation } from "./hooks/useContext"
+
+import "./styles/app.css"
+import LocationCard from "./components/LocationCard"
+import EpisodeCard from "./components/EpisodeCard"
 
 const charId = shuffle({ max: 800 })
 const locId = shuffle({ max: 120 })
@@ -13,8 +16,11 @@ const epId = shuffle({ max: 50 })
 const carouselTimer = 1500
 
 const App = () => {
-  const { character, setCharacter } = useCharacter()
-  const [, charLoading, charData] = useFetch<Character>({ type: "character", target: charId })
+  const { setCharacter } = useCharacter()
+  const { setEpisode } = useEpisode()
+  const { setLocation } = useLocation()
+
+  const [, , charData] = useFetch<Character>({ type: "character", target: charId })
   const [, , locData] = useFetch<Location>({ type: "location", target: locId })
   const [, , epData] = useFetch<Episode>({ type: "episode", target: epId })
 
@@ -68,10 +74,10 @@ const App = () => {
 
   useEffect(() => {
     charData && setCharacter(charData)
-    //locData && setLocation(locData)
-    //epData && setEpisode(epData)
+    locData && setLocation(locData)
+    epData && setEpisode(epData)
 
-  }, [charData, setCharacter])
+  }, [charData, setCharacter, locData, setLocation, epData, setEpisode])
 
   useEffect(() => {
     const title = titles[0]
@@ -84,9 +90,11 @@ const App = () => {
 
   return (
     <section className="container">
-      <h2 className={`title ${ isTitleAnimated && "text-transition" }`}>{title}</h2>
+      <h2 className={`title ${isTitleAnimated && "text-transition"}`}>{title}</h2>
       <div className="carousel-container">
-        { <CharacterCard /> }
+        <LocationCard />
+        <CharacterCard />
+        <EpisodeCard />
       </div>
       <div className="controls">
         <button className="btn-left" onClick={back}>{"<"}</button>
