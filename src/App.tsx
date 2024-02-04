@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react"
+import { RefObject, useEffect, useRef, useState } from "react"
+import type { Settings } from "react-slick"
 
 import useFetch from "./hooks/useFetch"
+import { useCharacter, useEpisode, useLocation } from "./hooks/useContext"
 import { shuffle } from "./utils"
 import { titles } from "./utils/constants"
-import CharacterCard from "./components/CharacterCard"
-import { useCharacter, useEpisode, useLocation } from "./hooks/useContext"
 
-import "./styles/app.css"
+import CharacterCard from "./components/CharacterCard"
 import LocationCard from "./components/LocationCard"
 import EpisodeCard from "./components/EpisodeCard"
+
+import "./styles/app.css"
+import "slick-carousel/slick/slick-theme.css"
+import "slick-carousel/slick/slick.css"
+import Slider from "react-slick"
 
 const charId = shuffle({ max: 800 })
 const locId = shuffle({ max: 120 })
 const epId = shuffle({ max: 50 })
-const carouselTimer = 1500
 
 const App = () => {
   const { setCharacter } = useCharacter()
@@ -72,6 +76,12 @@ const App = () => {
     })
   }
 
+  const cardActive: JsxField = {
+    0: <CharacterCard />,
+    1: <LocationCard />,
+    2: <EpisodeCard />
+  }
+
   useEffect(() => {
     charData && setCharacter(charData)
     locData && setLocation(locData)
@@ -80,21 +90,15 @@ const App = () => {
   }, [charData, setCharacter, locData, setLocation, epData, setEpisode])
 
   useEffect(() => {
-    const title = titles[0]
+    const title = titles[active]
     setTitle(title)
-
-    setInterval(() => {
-      // rotar carousel
-    }, carouselTimer)
-  }, [])
+  }, [active])
 
   return (
     <section className="container">
       <h2 className={`title ${isTitleAnimated && "text-transition"}`}>{title}</h2>
       <div className="carousel-container">
-        <EpisodeCard />
-        <CharacterCard />
-        <LocationCard />
+        {cardActive[active]}
       </div>
       <div className="controls">
         <button className="btn-left" onClick={back}>{"<"}</button>

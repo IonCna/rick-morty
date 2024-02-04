@@ -32,3 +32,15 @@ export const useEpisode = create<EpisodeActions>() (set => ({
     set(() => ({ episode: target }))
   }
 }))
+
+type ActiveActions = {
+  active: number
+  setActive: (target: number) => void
+}
+
+export const useActive = create<ActiveActions>() (set => ({
+  active: 0,
+  setActive(target) {
+      set(() => ({ active: target }))
+  },
+}))

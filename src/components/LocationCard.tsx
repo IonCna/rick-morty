@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useLocation } from "../hooks/useContext"
-import useFetch from "../hooks/useFetch"
 import CardLoading from "./CardLoading"
 import { shuffle } from "../utils"
 import { API } from "../utils/constants"

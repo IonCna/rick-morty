@@ -63,3 +63,7 @@ interface Field {
   [key: number]: string
   [key: string]: string
 }
+
+interface JsxField {
+  [key: number]:  JSX.Element
+}

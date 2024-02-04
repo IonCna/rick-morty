@@ -21,8 +21,6 @@ const EpisodeCard = () => {
     setEpisode(data)
   }
 
-  console.log(episode)
-
   return (
     <div className="card">
       <div className="content">
