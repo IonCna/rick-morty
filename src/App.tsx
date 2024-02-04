@@ -1,6 +1,4 @@
-import { RefObject, useEffect, useRef, useState } from "react"
-import type { Settings } from "react-slick"
-
+import { useEffect, useState } from "react"
 import useFetch from "./hooks/useFetch"
 import { useCharacter, useEpisode, useLocation } from "./hooks/useContext"
 import { shuffle } from "./utils"
@@ -11,9 +9,6 @@ import LocationCard from "./components/LocationCard"
 import EpisodeCard from "./components/EpisodeCard"
 
 import "./styles/app.css"
-import "slick-carousel/slick/slick-theme.css"
-import "slick-carousel/slick/slick.css"
-import Slider from "react-slick"
 
 const charId = shuffle({ max: 800 })
 const locId = shuffle({ max: 120 })
@@ -97,9 +92,7 @@ const App = () => {
   return (
     <section className="container">
       <h2 className={`title ${isTitleAnimated && "text-transition"}`}>{title}</h2>
-      <div className="carousel-container">
-        {cardActive[active]}
-      </div>
+      {cardActive[active]}
       <div className="controls">
         <button className="btn-left" onClick={back}>{"<"}</button>
         <button className="btn-right" onClick={next}>{">"}</button>

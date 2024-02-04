@@ -28,16 +28,24 @@ const CharacterCard = () => {
     <div className="card">
       <div className="banner" style={{ backgroundImage: `url(${character.image})` }}></div>
       <div className="content">
-        <div>
-          <h4 className="subtitle">{character.name}</h4>
-          <b> <span className={`status ${formatStatus}`}></span>{state} - {translatedSpecies}</b>
+        <div className="description">
+          <div>
+            <h4 className="subtitle">{character.name}</h4>
+            <b> <span className={`status ${formatStatus}`}></span>{state} - {translatedSpecies}</b>
+          </div>
+          <div>
+            <h4 className="subtitle">Genero</h4>
+            <b>{character.gender}</b>
+          </div>
         </div>
         <div>
           <h4 className="subtitle">Origen</h4>
           <b>{character.origin.name}</b>
         </div>
       </div>
-      <button onClick={characterHandler} className="btn">¡Dame otro!</button>
+      <div className="btn-container">
+        <button onClick={characterHandler} className="btn">¡Dame otro!</button>
+      </div>
     </div>
   )
 }

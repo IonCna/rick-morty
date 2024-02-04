@@ -28,7 +28,7 @@ const LocationCard = () => {
       <div className="content">
         <div>
           <h4 className="subtitle">
-            { length > 0 ? "Habitantes" : "Sin Habitantes" }
+            {length > 0 ? "Habitantes" : "Sin Habitantes"}
           </h4>
           <div className="thumbnail-container">
             {
@@ -43,7 +43,9 @@ const LocationCard = () => {
           <b>{location.dimension}</b>
         </div>
       </div>
-      <button onClick={locationHandler} className="btn">Vamos a otro lado</button>
+      <div className="btn-container">
+        <button onClick={locationHandler} className="btn">Vamos a otro lado</button>
+      </div>
     </div>
   )
 }
