@@ -7,6 +7,7 @@
 }
 
 :root {
+  --GRAY-100: #f1f5f9;
   --GRAY-300: #cbd5e1;
   --GRAY-400: #94a3b8;
   --GRAY-800: #1e293b;
@@ -36,6 +37,15 @@
   transition: color 0.2s ease-out;
 }
 
+.subtitle {
+  cursor: default;
+  font-weight: bolder;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  color: var(--GRAY-800);
+  transition: color 0.2s ease-out;
+}
+
 .text-transition {
   color: var(--GRAY-300);
 }
@@ -47,14 +57,124 @@
   max-width: 800px;
   max-height: 600px;
   height: 100%;
-  transform-style: preserve-3d;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.card {
+  display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 24px;
+  background-color: transparent;
+  box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
+  gap: 8px;
+}
+
+.card img {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.card .content {
+  width: 100%;
+  padding: 0 8px;
+}
+
+.card .content div {
+  margin: 10px 0;
+}
+
+.card .content .subtitle {
+  text-align: left;
+}
+
+.card .btn {
+  width: 66.666%;
+}
+
+/* Loading Components */
+
+.loading-image {
+  width: 240px;
+  height: 200px;
+  background: linear-gradient(
+    120deg,
+    #e5e5e5 30%,
+    #f0f0f0 38%,
+    #f0f0f0 40%,
+    #e5e5e5 48%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: loading 2s infinite;
+}
+
+.loading-text {
+  width: 200px;
+  height: 90px;
+  position: relative;
+  float: right;
+  border-radius: 5px;
+  background: linear-gradient(
+    120deg,
+    #e5e5e5 30%,
+    #f0f0f0 38%,
+    #f0f0f0 40%,
+    #e5e5e5 48%
+  );
+  margin-top: 10px;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: loading 2s infinite;
+}
+
+@keyframes loading {
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Status */
+
+.status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 100%;
+}
+
+.unknown {
+  background-color: var(--GRAY-400);
+}
+
+.dead {
+  background-color: red;
+}
+
+.alive {
+  background-color: green;
 }
 
 /* Buttons & controls */
+
+.btn {
+  cursor: pointer;
+  border: 1px solid var(--GRAY-400);
+  background-color: white;
+  color: var(--GRAY-800);
+  font-weight: 800;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.btn:hover {
+  background-color: var(--GRAY-100);
+}
 
 .controls {
   display: flex;

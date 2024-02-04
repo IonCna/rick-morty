@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 
 import useFetch from "./hooks/useFetch"
 import { shuffle } from "./utils"
-import { titles } from "./utils/constants"
+import { API, titles } from "./utils/constants"
 import "./styles/app.css"
 import CharacterCard from "./components/CharacterCard"
+import { useCharacter } from "./hooks/useContext"
 
 const charId = shuffle({ max: 800 })
 const locId = shuffle({ max: 120 })
@@ -12,16 +13,13 @@ const epId = shuffle({ max: 50 })
 const carouselTimer = 1500
 
 const App = () => {
-  const [, charLoading , charData] = useFetch<Character>({ type: "character", target: charId })
+  const { character, setCharacter } = useCharacter()
+  const [, charLoading, charData] = useFetch<Character>({ type: "character", target: charId })
   const [, , locData] = useFetch<Location>({ type: "location", target: locId })
   const [, , epData] = useFetch<Episode>({ type: "episode", target: epId })
 
   const [title, setTitle] = useState<string>()
   const [isTitleAnimated, setIsTitleAnimated] = useState<boolean>(false)
-
-  const [character, setCharacter] = useState<Character>()
-  const [location, setLocation] = useState<Location>()
-  const [episode, setEpisode] = useState<Episode>()
 
   const [active, setActive] = useState<number>(0)
 
@@ -70,10 +68,10 @@ const App = () => {
 
   useEffect(() => {
     charData && setCharacter(charData)
-    locData && setLocation(locData)
-    epData && setEpisode(epData)
+    //locData && setLocation(locData)
+    //epData && setEpisode(epData)
 
-  }, [charData, locData, epData])
+  }, [charData, setCharacter])
 
   useEffect(() => {
     const title = titles[0]
@@ -88,7 +86,7 @@ const App = () => {
     <section className="container">
       <h2 className={`title ${ isTitleAnimated && "text-transition" }`}>{title}</h2>
       <div className="carousel-container">
-        { character && <CharacterCard character={character} loading={charLoading} /> }
+        { <CharacterCard /> }
       </div>
       <div className="controls">
         <button className="btn-left" onClick={back}>{"<"}</button>

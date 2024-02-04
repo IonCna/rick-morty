@@ -59,6 +59,7 @@ interface SpecificLocation {
   url: string
 }
 
-interface Titles {
+interface Field {
   [key: number]: string
+  [key: string]: string
 }
