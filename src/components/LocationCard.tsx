@@ -4,18 +4,7 @@ import useFetch from "../hooks/useFetch"
 import CardLoading from "./CardLoading"
 import { shuffle } from "../utils"
 import { API } from "../utils/constants"
-
-const Resident = ({ url }: { url: string }) => {
-  const [data, setData] = useState<Character>()
-
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then(data => setData(data))
-  }, [url])
-
-  return <img className="thumbnail" src={data?.image} alt="" />
-}
+import Thumbnail from "./Thumbnail"
 
 const LocationCard = () => {
   const { location, setLocation } = useLocation()
@@ -45,7 +34,7 @@ const LocationCard = () => {
           <div className="thumbnail-container">
             {
               length > 0
-                ? location.residents.map((resident, index) => <Resident key={index} url={resident} />)
+                ? location.residents.map((resident, index) => <Thumbnail key={index} url={resident} />)
                 : <img alt="sin habitantes" />
             }
           </div>
@@ -55,7 +44,7 @@ const LocationCard = () => {
           <b>{location.dimension}</b>
         </div>
       </div>
-      <button onClick={locationHandler} className="btn">¡Dame otro!</button>
+      <button onClick={locationHandler} className="btn">Vamos a otro lado</button>
     </div>
   )
 }

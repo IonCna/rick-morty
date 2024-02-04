@@ -92,9 +92,9 @@ const App = () => {
     <section className="container">
       <h2 className={`title ${isTitleAnimated && "text-transition"}`}>{title}</h2>
       <div className="carousel-container">
-        <LocationCard />
-        <CharacterCard />
         <EpisodeCard />
+        <CharacterCard />
+        <LocationCard />
       </div>
       <div className="controls">
         <button className="btn-left" onClick={back}>{"<"}</button>
