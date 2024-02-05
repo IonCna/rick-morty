@@ -5,6 +5,8 @@ import { shuffle } from "../utils"
 import { API } from "../utils/constants"
 import Thumbnail from "./Thumbnail"
 
+import defaultThumbnail from "../assets/rick-morty-.webp"
+
 const LocationCard = () => {
   const { location, setLocation } = useLocation()
   const [loading, setLoading] = useState<boolean>(false)
@@ -23,6 +25,11 @@ const LocationCard = () => {
     setLocation(data)
   }
 
+  const filterCharacters = () => {
+    const { residents } = location
+    return residents.slice(0, 9).filter(character => character)
+  }
+
   return (
     <div className="card">
       <div className="content">
@@ -33,8 +40,8 @@ const LocationCard = () => {
           <div className="thumbnail-container">
             {
               length > 0
-                ? location.residents.map((resident, index) => <Thumbnail key={index} url={resident} />)
-                : <img alt="sin habitantes" />
+                ? filterCharacters().map((resident, index) => <Thumbnail key={index} url={resident} />)
+                : <div className="banner" style={{ backgroundImage: `url(${defaultThumbnail})` }}></div>
             }
           </div>
         </div>

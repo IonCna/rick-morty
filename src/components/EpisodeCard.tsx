@@ -21,6 +21,11 @@ const EpisodeCard = () => {
     setEpisode(data)
   }
 
+  const filterCharacters = () => {
+    const { characters } = episode
+    return characters.slice(0, 9).filter(character => character)
+  }
+
   return (
     <div className="card">
       <div className="content">
@@ -28,7 +33,7 @@ const EpisodeCard = () => {
           <h4 className="subtitle">Personajes</h4>
           <div className="thumbnail-container">
             {
-              episode.characters.map((character, index) => <Thumbnail key={index} url={character} />)
+              filterCharacters().map((character, index) => <Thumbnail key={index} url={character} />)
             }
           </div>
         </div>
@@ -37,7 +42,9 @@ const EpisodeCard = () => {
           <b>{episode.episode}</b>
         </div>
       </div>
-      <button onClick={episodeHandler} className="btn">Otro</button>
+      <div className="btn-container">
+        <button onClick={episodeHandler} className="btn">Otro</button>
+      </div>
     </div>
   )
 }
