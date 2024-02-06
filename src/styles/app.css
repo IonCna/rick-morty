@@ -188,3 +188,15 @@
 .controls button:hover {
   background-color: var(--GRAY-400);
 }
+
+@media screen and (width <= 375px) {
+  .card {
+    box-shadow: none;
+    border-radius: 0;
+    width: 300px;
+  }
+
+  .banner {
+    border-radius: 0;
+  }
+}
