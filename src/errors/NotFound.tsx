@@ -8,6 +8,7 @@ const NotFound = () => {
       <img
         src="https://imgs.search.brave.com/_xGmmIaM_ioOwk7bcchUKJ1qOjs-uUpdPx_fQFbnrHk/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDMyNzc3/MzUuanBn"
         alt=""
+        className="not-found-banner"
       />
 
       <div className="not-found-content">

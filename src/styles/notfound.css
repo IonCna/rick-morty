@@ -12,7 +12,7 @@
   gap: 0;
 }
 
-.container img {
+.container .not-found-banner {
   height: 350px;
   width: 100%;
   object-fit: cover;
